@@ -119,14 +119,50 @@ public class NavTestPage : ContentPage
         {
             for (var b = 0; b < 25; b++)
             {
-                var box = new BoxView
+                var internalGrid = new Grid
                 {
-                    HorizontalOptions = LayoutOptions.Fill,
-                    VerticalOptions = LayoutOptions.Fill,
-                    Color = (b % 2) == 0 ? Colors.Red : Colors.Blue
-                }.Row(a).Col(b);
+                    Style = MarkupStyles.FillLayoutStyle,
+                    RowDefinitions =
+                    {
+                        new RowDefinition { Height = GridLength.Star },
+                        new RowDefinition { Height = GridLength.Star }
+                    },
+                    ColumnDefinitions =
+                    {
+                        new ColumnDefinition { Width = GridLength.Star },
+                        new ColumnDefinition { Width = GridLength.Star }
+                    },
+                    Children =
+                    {
+                        new BoxView
+                        {
+                            Style = MarkupStyles.FillLayoutStyle,
+                            Color = Colors.Red
+                        }
+                            .Row(0).Col(0),
+                        new BoxView
+                        {
+                            Style = MarkupStyles.FillLayoutStyle,
+                            Color = Colors.Blue
+                        }
+                            .Row(0).Col(1),
+                        new BoxView
+                        {
+                            Style = MarkupStyles.FillLayoutStyle,
+                            Color = Colors.Blue
+                        }
+                            .Row(1).Col(0),
+                        new BoxView
+                        {
+                            Style = MarkupStyles.FillLayoutStyle,
+                            Color = Colors.Red
+                        }
+                            .Row(1).Col(1),
+                    }
+                }
+                    .Row(a).Col(b); 
 
-                grid.Children.Add(box);
+                grid.Children.Add(internalGrid);
             }
         }
     }

@@ -38,6 +38,7 @@
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-ios|AnyCPU'">
 	  <CreatePackage>false</CreatePackage>
 	  <MtouchEnableSGenConc>true</MtouchEnableSGenConc>
+	  <MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
 	</PropertyGroup>
 	<ItemGroup>
 		<!-- App Icon -->

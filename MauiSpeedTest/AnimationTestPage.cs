@@ -5,7 +5,7 @@ namespace MauiSpeedTest;
 public class AnimationTestPage : ContentPage
 {
 	private Grid animationGrid;
-    private int gridSideLength = 15;
+    private int gridSideLength = 16;
     private uint animationLength = 2000;
 
 	public AnimationTestPage()
@@ -67,6 +67,8 @@ public class AnimationTestPage : ContentPage
                         new RowDefinition { Height = GridLength.Star },
                         new RowDefinition { Height = GridLength.Star },
                         new RowDefinition { Height = GridLength.Star },
+                        new RowDefinition { Height = GridLength.Star },
+
                         new RowDefinition { Height = GridLength.Star }
                     },
 
@@ -88,6 +90,7 @@ public class AnimationTestPage : ContentPage
                         new ColumnDefinition { Width = GridLength.Star },
                         new ColumnDefinition { Width = GridLength.Star },
                         new ColumnDefinition { Width = GridLength.Star },
+                        new ColumnDefinition { Width = GridLength.Star },
                         new ColumnDefinition { Width = GridLength.Star }
                     },
                 }
@@ -101,14 +104,27 @@ public class AnimationTestPage : ContentPage
         {
             for (var b = 0; b < gridSideLength; b++)
             {
-                var box = new BoxView
+                var internalGrid = new Grid
                 {
-                    HorizontalOptions = LayoutOptions.Fill,
-                    VerticalOptions = LayoutOptions.Fill,
-                    Color = (b % 2) == 0 ? Colors.Red : Colors.Blue
-                }.Row(a).Col(b);
+                    Style = MarkupStyles.FillLayoutStyle,
+                    ColumnDefinitions =
+                        {
+                            new ColumnDefinition { Width = GridLength.Star }
+                        },
+                    Children =
+                        {
+                            new BoxView
+                            {
+                                Style = MarkupStyles.FillLayoutStyle,
+                                Color = Colors.Red  
+                            }
+                                .Row(0).Col(0),
 
-                animationGrid.Children.Add(box);
+                        }
+                }
+                    .Row(a).Col(b);
+
+                animationGrid.Children.Add(internalGrid);
             }
         }
     }
