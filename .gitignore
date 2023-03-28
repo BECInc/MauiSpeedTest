@@ -1,0 +1,55 @@
+# Autosave files
+*~
+
+# build
+[Oo]bj/
+[Bb]in/
+packages/
+TestResults/
+!services/bin
+[Aa]rtifacts/
+
+# globs
+Makefile.in
+*.DS_Store
+*.sln.cache
+*.suo
+*.cache
+*.pidb
+*.userprefs
+*.usertasks
+config.log
+config.make
+config.status
+aclocal.m4
+install-sh
+autom4te.cache/
+*.user
+*.tar.gz
+tarballs/
+test-results/
+Thumbs.db
+
+# Mac bundle stuff
+*.dmg
+*.app
+*.ipa
+
+# resharper
+*_Resharper.*
+*.Resharper
+
+# VS Stuff
+.vs/*
+
+# rider
+.idea/*
+
+# dotCover
+*.dotCover
+/services/deploy.sh
+/node_modules
+/package-lock.json
+/PolarisExperience.Integration.Tests/TestResult.xml
+
+**/AppConsts.cs
